@@ -1,3 +1,145 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(135deg, #0000 18.75%, #366f80 0 31.25%, #0000 0), repeating-linear-gradient(45deg, #366f80 -6.25% 6.25%, rgba(170, 171, 210, 0.44) 0 18.75%);
+}
+
+
+/*
+    CLASES GENERALES
+*/
+
+.centrado {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/*
+    CONTENEDOR DE INPUT DEL TEMA Y BOTON PARA ESTUDIAR
+*/
+
+.contenedorInput {
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    width: 50%;
+    flex-direction: column;
+}
+
+
+/* 
+    TITULO "QUE QUIERES ESTUDIAR?"
+*/
+
+#titulo {
+    text-align: center;
+    font-size: 14vh;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+/* 
+    INPUT PARA EL TEMA A ESTUDIAR
+*/
+
+.contenedorInput input {
+    margin-top: 10px;
+    width: 50%;
+    border: none;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: #e8e8e8;
+    box-shadow: 1px 1px 5px #c5c5c5, -1px -1px 5px #ffffff;
+    transition: 0.3s;
+}
+
+.contenedorInput input:focus {
+    outline-color: #e8e8e8;
+    background: #e8e8e8;
+    box-shadow: inset 20px 20px 60px #c5c5c5, inset -20px -20px 60px #ffffff;
+    transition: 0.3s;
+}
+
+
+/* 
+    BOTON PARA ESTUDIAR
+*/
+
+.contenedorInput button {
+    text-align: center;
+    width: 20%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: #090909;
+    padding: auto;
+    font-size: 17px;
+    border-radius: 0.5em;
+    background: #e8e8e8;
+    border: 1px solid #e8e8e8;
+    transition: all .3s;
+    box-shadow: 3px 3px 6px #c5c5c5, -3px -3px 6px #ffffff;
+    cursor: pointer;
+}
+
+.contenedorInput button:active {
+    color: #666;
+    box-shadow: inset 3px 3px 6px #c5c5c5, inset -2px -2px 6px #ffffff;
+}
+
+@media (max-width: 768px) {
+    .contenedorInput button {
+        font-size: 15px;
+        width: 30%;
+    }
+}
+
+
+/*
+    VENTANA DE CARGA
+*/
+
+#contenedorCarga {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    background-color: rgb(8, 13, 13, .4);
+    z-index: 999;
+}
+
+
+/*
+    ICONO DE CARGA
+*/
+
+#loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color: #5b5bee;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
 /* 
     CSS DE TARJETA REVERSIBLE
 */
@@ -5,9 +147,9 @@
 .tarjeta {
     background-color: transparent;
     width: 300px;
-    height: 300px;
-    border: 1px solid #f1f1f1;
+    height: 250px;
     perspective: 1000px;
+    margin-top: 10px;
 }
 
 .interiorTarjeta {
@@ -20,7 +162,8 @@
 }
 
 .tarjeta:hover .interiorTarjeta {
-    transform: rotateY(180deg);
+    transform: rotateY(180deg) scale(1.2);
+    z-index: 998;
 }
 
 .pregunta,
@@ -33,12 +176,18 @@
 }
 
 .pregunta {
-    background-color: #bbb;
-    color: black;
+    background: rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
 }
 
 .respuesta {
-    background-color: dodgerblue;
-    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     transform: rotateY(180deg);
+    border-radius: 15px;
 }

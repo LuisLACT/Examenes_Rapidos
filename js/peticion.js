@@ -15,6 +15,7 @@ const promt = `
 `;
 
 function validar() {
+
     const keyTemp = document.getElementById("inputApiKey").value;
     const tema = document.getElementById("inputTema").value;
 
@@ -25,6 +26,7 @@ function validar() {
             if (tema == "") {
                 alert("Introduce un tema");
             } else {
+                document.getElementById("contenedorCarga").hidden = false;
                 peticionAChatGPT(tema);
             }
         }
@@ -33,9 +35,11 @@ function validar() {
         if (tema == "") {
             alert("Introduce un tema");
         } else {
+            document.getElementById("contenedorCarga").hidden = false;
             peticionAChatGPT(tema);
         }
     }
+    document.getElementById("contenedorCarga").hidden = true;
 }
 
 
