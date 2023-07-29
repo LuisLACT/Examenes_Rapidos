@@ -1,15 +1,15 @@
-let keyApiDefault = "";
+let keyApiDefault = "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";
 const promt = `
 . Realiza 5 preguntas con respuestas del tema indicado en formato JSON, 
     unicamente DAME el json con EXACTAMENTE ESTA estructura sin titulo: 
     {
         {
             "pregunta": "pregunta 1",
-            "respuesta": "respuesta 1"
+            "respuesta": "respuesta de maximo 100 caracteres"
         }, 
         {
             "pregunta": "pregunta 2",
-            "respuesta": "respuesta 2"
+            "respuesta": "respuesta de maximo 100 caracteres"
         }
     }
 `;
@@ -26,7 +26,7 @@ function validar() {
             if (tema == "") {
                 alert("Introduce un tema");
             } else {
-                document.getElementById("contenedorCarga").hidden = false;
+                mostrarPantallaCarga();
                 peticionAChatGPT(tema);
             }
         }
@@ -35,11 +35,10 @@ function validar() {
         if (tema == "") {
             alert("Introduce un tema");
         } else {
-            document.getElementById("contenedorCarga").hidden = false;
+            mostrarPantallaCarga();
             peticionAChatGPT(tema);
         }
     }
-    document.getElementById("contenedorCarga").hidden = true;
 }
 
 
@@ -81,11 +80,11 @@ async function generarTarjetas(preguntasRecibidas) {
             contenedor += `
                 <div class="tarjeta">
                     <div class="interiorTarjeta">
-                        <div class="pregunta contenido" id="preguntaContenido1">
+                        <div class="pregunta contenido centrado" id="preguntaContenido1">
                             <h1 class="tituloPregunta">Pregunta: ${cont}</h1>
                             <p class="cuerpoPregunta">${element.pregunta}</p>
                         </div>
-                        <div class="respuesta contenido" id="respuestaContenido1">
+                        <div class="respuesta contenido centrado" id="respuestaContenido1">
                             <h1 class="tituloRespuesta">Respuesta: </h1>
                             <p class="cuerpoRespuesta">${element.respuesta}</p>
                         </div>
@@ -97,6 +96,26 @@ async function generarTarjetas(preguntasRecibidas) {
 
         document.getElementById("contenedorPregunta").innerHTML = contenedor;
     } catch (error) {
-        peticionAChatGPT(tema)
+        peticionAChatGPT(document.getElementById("inputTema").value)
     }
+
+    ocultarPantallaCarga();
+}
+
+function mostrarPantallaCarga() {
+    console.log("Mostrar pnatlla de carga");
+    document.getElementById("contenedorCarga").hidden = false;
+}
+
+function ocultarPantallaCarga() {
+    console.log("Ocultar pnatlla de carga");
+    document.getElementById("contenedorCarga").hidden = true;
+}
+
+function pantallaApi() {
+    document.getElementById("contenedorApi").hidden = false;
+}
+
+function ocultarPantallaApi() {
+    document.getElementById("contenedorApi").hidden = true;
 }
