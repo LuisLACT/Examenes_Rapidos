@@ -1,4 +1,4 @@
-let keyApiDefault = "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";
+let keyApiDefault = "";
 const promt = `
 . Realiza 5 preguntas con respuestas del tema indicado en formato JSON, 
     unicamente DAME el json con EXACTAMENTE ESTA estructura sin titulo: 
